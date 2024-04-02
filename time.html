@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+	"width=device-width, initial-scale=1.0">
+	<title>Digital Clock</title>
+	<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+.product {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: black 3px solid;
+}
+
+#clock {
+    color: aliceblue;
+	/* font: 50px solid white; */
+    height: 10%;
+	width: 51%;
+    align-items: center;
+	/* margin: 200px; */
+	text-align: center;
+	/* border: 2px solid white;
+	border-radius: 20px; */
+    position: absolute ;
+}
+
+img {
+    padding: 0;
+    margin: 0;
+}
+
+.watch {
+    height: 65%;
+    width: 55%;
+}
+    </style>
+    <script>
+        // Defining showTime funcion
+function showTime() {
+	// Getting current time and date
+	let time = new Date();
+	let hour = time.getHours();
+	let min = time.getMinutes();
+	let sec = time.getSeconds();
+	am_pm = "AM";
+
+	// Setting time for 12 Hrs format
+	if (hour >= 12) {
+		if (hour > 12) hour -= 12;
+		am_pm = "PM";
+	} else if (hour == 0) {
+		hr = 12;
+		am_pm = "AM";
+	}
+
+	hour =
+		hour < 10 ? "0" + hour : hour;
+	min = min < 10 ? "0" + min : min;
+	sec = sec < 10 ? "0" + sec : sec;
+
+	let currentTime = hour+ ":"+ min+ ":"+ sec+ am_pm;
+
+	// Displaying the time
+	document.getElementById("clock").innerHTML = currentTime;
+}
+
+//calling showTime function at every second
+setInterval(showTime, 1000);
+
+showTime();
+    </script>
+</head>
+<body>
+    <div class="product">
+        <div class="watch">
+            <img src="https://www.shutterstock.com/image-vector/digital-wristwatch-blank-background-vector-260nw-453347410.jpg" style="width:100%;">
+        </div>
+        <div id="clock">
+            8:10:45
+        </div>
+    </div>
+	<script src="app.js"></script>
+</body>
+</html>
